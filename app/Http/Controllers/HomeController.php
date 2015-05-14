@@ -38,5 +38,9 @@ class HomeController extends Controller {
             $groups = Group::all();
             return view('home.groups', compact('groups'));
         }
+        
+        public function creategroup(){
+            
+        }
 
 }
