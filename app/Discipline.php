@@ -9,4 +9,8 @@ class Discipline extends Model {
     protected $table = 'disciplines';
     protected $fillable = ['title'];
 
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
+
 }
