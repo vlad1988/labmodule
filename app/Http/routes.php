@@ -15,6 +15,12 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 Route::get('groups', 'HomeController@groups');
+Route::post('groups', 'HomeController@creategroup');
+Route::get('group/{id}', 'HomeController@deletegroupview');
+Route::get('edit/{id}', 'HomeController@editgroupview');
+
+
+
 
 
 Route::controllers([

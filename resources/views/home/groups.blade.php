@@ -3,20 +3,25 @@
 
 <div class="container">
     <div class="content row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h4 class="title">Групи</h4> 
+            <hr>
             <table class="table table-striped">
+                @foreach($groups as $group)
                 <tr>
-                    @foreach($groups as $group)
-                    <td>{{ $group->title }}</td>
-                    @endforeach
-                </tr>
 
+                    <td>{{ $group->title }}</td> 
+                    <td></td>
+                    <td><a href="edit/{{$group->id}}" class="">Редагувати</a> </td>
+                    <td><a href="group/{{$group->id}}" class="">Видалити</a></td>
+                </tr>
+                @endforeach
             </table>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h4 class="title">Додати группу</h4>
-            {!! Form::open(['url' => 'articles']) !!}
+            <hr>
+            {!! Form::open(['url' => 'groups']) !!}
             <div class="form-group">
                 {!! Form::label('title', 'Назва:') !!}
                 {!! Form::text('title', null, ['class' => 'form-control ']) !!}
