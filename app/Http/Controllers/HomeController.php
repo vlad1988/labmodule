@@ -27,7 +27,7 @@ class HomeController extends Controller {
     }
 
     public function groups() {
-        $groups = Group::all();
+        $groups = Group::orderBy('title')->get();
         return view('home.groups', compact('groups'));
     }
 
