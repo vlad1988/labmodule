@@ -37,6 +37,7 @@
                         @if (Auth::check())
                         <li><a href="{{ url('/groups') }}">Групи</a></li>
                         <li><a href="{{ url('/students') }}">Студенти</a></li>
+                        <li><a href="{{ url('/disciplines') }}">Дисципліни</a></li>
                         @endif
 
                     </ul>

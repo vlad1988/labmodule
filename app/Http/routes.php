@@ -1,15 +1,5 @@
 <?php
 
-/*
-  |--------------------------------------------------------------------------
-  | Application Routes
-  |--------------------------------------------------------------------------
-  |
-  | Here is where you can register all of the routes for an application.
-  | It's a breeze. Simply tell Laravel the URIs it should respond to
-  | and give it the controller to call when that URI is requested.
-  |
- */
 
 Route::get('/', 'WelcomeController@index');
 
@@ -27,6 +17,13 @@ Route::post('editgroup', 'HomeController@editgroup');
 
 /** Srudents CRUD * */
 Route::get('students', 'StudentController@index');
+Route::get('show/{id}', 'StudentController@show');
+Route::post('create/student', 'StudentController@create');
+
+/** Disciplines CRUD * */
+Route::get('disciplines', 'DisciplineController@index');
+Route::post('create/discipline', 'DisciplineController@create');
+
 
 
 
