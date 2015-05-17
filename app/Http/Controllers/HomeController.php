@@ -7,16 +7,6 @@ use App\Http\Requests;
 use Request;
 
 class HomeController extends Controller {
-    /*
-      |--------------------------------------------------------------------------
-      | Home Controller
-      |--------------------------------------------------------------------------
-      |
-      | This controller renders your application's "dashboard" for users that
-      | are authenticated. Of course, you are free to change or remove the
-      | controller as you wish. It is just here to get your app started!
-      |
-     */
 
     /**
      * Create a new controller instance.
@@ -50,13 +40,28 @@ class HomeController extends Controller {
     }
 
     public function deletegroupview($id) {
+        $group = Group::find($id);
+        $title = $group->title;
+        return view('home.deletegroup', compact('id', 'title'));
+    }
 
-        return view('home.deletegroup', compact('id'));
+    public function deletegroup() {
+        $id = Request::input('id');
+        $group = Group::find($id);
+        $group->delete();
+        return redirect('groups');
     }
 
     public function editgroupview($id) {
+        $group = Group::find($id);
+        return view('home.editgroup', compact('id', 'group'));
+    }
 
-        return view('home.editgroup', compact('id'));
+    public function editgroup() {
+        $title = Request::input('title');
+        $id = Request::input('id');
+        Group::where('id', '=', $id)->update(array('title' => $title));
+        return redirect('groups');
     }
 
 }

@@ -13,7 +13,7 @@
                     <td>{{ $group->title }}</td> 
                     <td></td>
                     <td><a href="edit/{{$group->id}}" class="">Редагувати</a> </td>
-                    <td><a href="group/{{$group->id}}" class="">Видалити</a></td>
+                    <td><a href="delete/{{$group->id}}" class="">Видалити</a></td>
                 </tr>
                 @endforeach
             </table>
