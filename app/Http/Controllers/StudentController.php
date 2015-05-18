@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Request;
-
 use App\Study;
+use App\Discipline;
 use App\Student;
 use App\Group;
 use Webpatser\Uuid\Uuid;
@@ -45,10 +45,30 @@ class StudentController extends Controller {
 
         return redirect('students');
     }
-    
-    public function show($id){
-        $posts = Student::find($id)->disciplines;
-        return view('student.student', compact('posts'));
+
+    public function addtolist() {
+        $student_id = Request::input('student_id');
+        $discipline_id = Request::input('discipline_id');
+
+        $study = new Study;
+        $study->student_id = $student_id;
+        $study->discipline_id = $discipline_id;
+        $study->save();
+        return redirect('show/' . $student_id);
+    }
+
+    public function show($id) {
+        $student = Student::find($id);
+        $discipline_list = Discipline::all();
+        $disciplines = Student::find($id)->disciplines;
+        return view('student.student', compact('disciplines', 'student', 'discipline_list', 'id'));
+    }
+
+    public function listbrake() {
+        $student_id = Request::input('student_id');
+        $discipline_id = Request::input('discipline_id');
+        Study::whereRaw('student_id = '.$student_id.' and discipline_id = '.$discipline_id)->delete();
+        return redirect('show/' . $student_id);
     }
 
 }

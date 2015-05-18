@@ -30,12 +30,12 @@ class DisciplineController extends Controller {
     public function create() {
         $user_id = Request::input('user_id');
         $title = Request::input('title');
-        
+
         $discipline = new Discipline;
         $discipline->title = $title;
         $discipline->user_id = $user_id;
         $discipline->save();
-        
+
         return redirect('disciplines');
     }
 

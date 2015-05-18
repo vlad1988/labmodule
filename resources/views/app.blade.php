@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Модуль обліку</title>
 
-        <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/app.css')}}" rel="stylesheet">
 
         <!-- Fonts -->
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -28,30 +28,30 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url('/') }}">Модуль обліку</a>
+                    <a class="navbar-brand" href="{{ url('/')}}">Модуль обліку</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/') }}">Головна</a></li>
+                        <li><a href="{{ url('/')}}">Головна</a></li>
                         @if (Auth::check())
-                        <li><a href="{{ url('/groups') }}">Групи</a></li>
-                        <li><a href="{{ url('/students') }}">Студенти</a></li>
-                        <li><a href="{{ url('/disciplines') }}">Дисципліни</a></li>
+                        <li><a href="{{ url('/groups')}}">Групи</a></li>
+                        <li><a href="{{ url('/students')}}">Студенти</a></li>
+                        <li><a href="{{ url('/disciplines')}}">Дисципліни</a></li>
                         @endif
 
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::guest())
-                        <li><a href="{{ url('/auth/login') }}">Вхід</a></li>
-                        <li><a href="{{ url('/auth/register') }}">Користувачі</a></li>
+                        <li><a href="{{ url('/auth/login')}}">Вхід</a></li>
+                        <li><a href="{{ url('/auth/register')}}">Користувачі</a></li>
 
                         @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} {{ Auth::user()->surname }} <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+                                <li><a href="{{ url('/auth/logout')}}">Logout</a></li>
                             </ul>
                         </li>
                         @endif
@@ -66,5 +66,8 @@
         <!-- Scripts -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="{{ asset('/js/angular.min.js')}}"></script>
+        <script src="{{ asset('/app/app.js')}}"></script>
+
     </body>
 </html>

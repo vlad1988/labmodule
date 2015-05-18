@@ -19,6 +19,10 @@ Route::post('editgroup', 'HomeController@editgroup');
 Route::get('students', 'StudentController@index');
 Route::get('show/{id}', 'StudentController@show');
 Route::post('create/student', 'StudentController@create');
+Route::post('addtolist', 'StudentController@addtolist');
+Route::post('item/remove', 'StudentController@listbrake');
+
+
 
 /** Disciplines CRUD * */
 Route::get('disciplines', 'DisciplineController@index');
