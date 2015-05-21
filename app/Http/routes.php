@@ -7,6 +7,7 @@ Route::get('home', 'HomeController@index');
 
 /** Groups CRUD * */
 Route::get('groups', 'HomeController@groups');
+Route::get('group/{id}', 'HomeController@group');
 Route::post('groups', 'HomeController@creategroup');
 
 Route::get('delete/{id}', 'HomeController@deletegroupview');
@@ -26,9 +27,9 @@ Route::post('item/remove', 'StudentController@listbrake');
 
 /** Disciplines CRUD * */
 Route::get('disciplines', 'DisciplineController@index');
+Route::get('discipline/edit/{id}', 'DisciplineController@edit');
 Route::post('create/discipline', 'DisciplineController@create');
-
-
+Route::post('discipline/remove/{id}', 'DisciplineController@destroy');
 
 
 Route::controllers([

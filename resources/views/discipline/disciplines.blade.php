@@ -8,8 +8,22 @@
             @foreach ($disciplines as $discipline)
             <tr>
                 <td>
-                    {{ $discipline->title }}
+                    <a href="{{url('discipline/edit/'.$discipline->id)}}">{{ $discipline->title }}</a>
                 </td>
+                <td>
+                    <a href="{{url('discipline/edit/'.$discipline->id)}}" >
+                        <button class="btn btn-warning  btn-xs form-control">Редагувати</button>
+                    </a>
+                </td>
+                <td>
+                    {!! Form::open(['url' => 'discipline/remove/'.$discipline->id]) !!}
+                    {!! Form::hidden('discipline_id', $discipline->id) !!}
+                    <div class="form-group">
+                        {!! Form::submit('Видалити', ['class' => 'btn btn-danger btn-xs form-control ']) !!}
+                    </div>   
+                    {!! Form::close() !!}
+                </td>
+
             </tr>
             @endforeach
         </table>
@@ -22,6 +36,14 @@
         <div class="form-group">
             {!! Form::label('title', 'Назва:') !!}
             {!! Form::text('title', null, ['class' => 'form-control ']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('group_id', 'Оберіть групу:') !!}
+            <select class="form-control" name="group_id">
+                @foreach($groups as $group)
+                <option value="{{ $group->id }}">{{ $group->title }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             {!! Form::submit('Додати', ['class' => 'btn btn-primary form-control ']) !!}

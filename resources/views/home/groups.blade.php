@@ -10,7 +10,7 @@
                 @foreach($groups as $group)
                 <tr>
 
-                    <td>{{ $group->title }}</td> 
+                    <td><a href="{{ url('group/' . $group->id) }}">{{ $group->title }}</a></td> 
                     <td></td>
                     <td><a href="edit/{{$group->id}}" class="">Редагувати</a> </td>
                     <td><a href="delete/{{$group->id}}" class="">Видалити</a></td>

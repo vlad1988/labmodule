@@ -16,7 +16,6 @@
                         {!! Form::submit('Видалити', ['class' => 'btn btn-warning btn-xs form-control ']) !!}
                     </div>                    
                     {!! Form::close() !!}
-
                 </td>
             </tr>
             @endforeach

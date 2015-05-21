@@ -8,6 +8,7 @@ use \Illuminate\Support\Facades\Auth;
 use Request;
 use App\User;
 use App\Discipline;
+use App\Group;
 
 class DisciplineController extends Controller {
 
@@ -19,7 +20,8 @@ class DisciplineController extends Controller {
     public function index() {
         $id = Auth::id();
         $disciplines = Discipline::where('user_id', '=', $id)->orderBy('title')->get();
-        return view('discipline.disciplines', compact('disciplines'));
+        $groups = Group::orderBy('title')->get();
+        return view('discipline.disciplines', compact('disciplines', 'groups'));
     }
 
     /**
@@ -30,10 +32,12 @@ class DisciplineController extends Controller {
     public function create() {
         $user_id = Request::input('user_id');
         $title = Request::input('title');
+        $group_id = Request::input('group_id');
 
         $discipline = new Discipline;
         $discipline->title = $title;
         $discipline->user_id = $user_id;
+        $discipline->group_id = $group_id;
         $discipline->save();
 
         return redirect('disciplines');
@@ -65,7 +69,7 @@ class DisciplineController extends Controller {
      * @return Response
      */
     public function edit($id) {
-        //
+        return $id;
     }
 
     /**
@@ -75,7 +79,7 @@ class DisciplineController extends Controller {
      * @return Response
      */
     public function update($id) {
-        //
+        
     }
 
     /**
@@ -85,7 +89,7 @@ class DisciplineController extends Controller {
      * @return Response
      */
     public function destroy($id) {
-        //
+        return $id;
     }
 
 }

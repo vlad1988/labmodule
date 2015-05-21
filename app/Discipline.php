@@ -14,7 +14,7 @@ class Discipline extends Model {
     }
 
     public function student() {
-        return $this->belongsToMany('App\Student', 'studies');
+        return $this->belongsToMany('App\Student', 'group_discipline');
     }
 
 }

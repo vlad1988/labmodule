@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-    <div class="col-md-6">
+    <div class="col-md-8">
         <table class="table table-hover">
             <tr>
                 <th>Ім'я Прізвище</th>
@@ -13,17 +13,18 @@
             <tr>
                 <td>
                     <a href="{{action('StudentController@show', [$student->id])}}">
-                    {{ $student->surname }} {{ $student->name }}
+                        {{ $student->surname }} {{ $student->name }}
                     </a>
                 </td>
                 <td>{{ $student->email }}</td>
                 <td>{{ $student->guid }}</td>
+
             </tr>
             @endforeach
         </table>
 
     </div>
-    <div class="col-lg-6">
+    <div class="col-md-4">
         <h4>Додати студента</h4>
         <hr/>
         {!! Form::open(array('url' => 'create/student')) !!}

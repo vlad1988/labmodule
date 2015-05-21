@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Student;
 use App\Http\Requests;
 use Request;
 
@@ -62,6 +63,11 @@ class HomeController extends Controller {
         $id = Request::input('id');
         Group::where('id', '=', $id)->update(array('title' => $title));
         return redirect('groups');
+    }
+
+    public function group($id) {
+        $students = Student::where('group_id', '=', $id)->orderBy('surname')->get();
+        return view('home.group', compact('id', 'students'));
     }
 
 }
