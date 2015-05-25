@@ -19,9 +19,11 @@ class DisciplineController extends Controller {
      */
     public function index() {
         $id = Auth::id();
+        $gr = Discipline::find(1)->group;
+
         $disciplines = Discipline::where('user_id', '=', $id)->orderBy('title')->get();
         $groups = Group::orderBy('title')->get();
-        return view('discipline.disciplines', compact('disciplines', 'groups'));
+        return view('discipline.disciplines', compact('disciplines', 'groups', 'gr'));
     }
 
     /**

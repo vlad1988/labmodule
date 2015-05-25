@@ -5,6 +5,7 @@
     <div class="col-md-6">
         <table class="table table-hover">
             <h4>Дисципліни</h4>
+            <?= $gr; ?>
             @foreach ($disciplines as $discipline)
             <tr>
                 <td>
