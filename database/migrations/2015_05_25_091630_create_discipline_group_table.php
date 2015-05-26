@@ -14,9 +14,9 @@ class CreateDisciplineGroupTable extends Migration {
         Schema::create('discipline_group', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('discipline_id')->unsigned();
-            $table->integer('student_id')->unsigned();
+            $table->integer('group_id')->unsigned();
             $table->foreign('discipline_id')->references('id')->on('disciplines');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('group_id')->references('id')->on('groups');
             $table->timestamps();
         });
     }
