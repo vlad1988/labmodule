@@ -11,7 +11,7 @@ class Group extends Model {
 
     public function disciplines()
     {
-        return $this->hasMany('App\Discipline');
+        return $this->belongsToMany('App\Discipline');
     }
 
 }

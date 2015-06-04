@@ -19,7 +19,7 @@ class DisciplineController extends Controller {
      */
     public function index() {
         $id = Auth::id();
-        $gr = Discipline::find(1)->group;
+        //$gr = Discipline::find(1)->group;
 
         $disciplines = Discipline::where('user_id', '=', $id)->orderBy('title')->get();
         $groups = Group::orderBy('title')->get();
@@ -34,12 +34,10 @@ class DisciplineController extends Controller {
     public function create() {
         $user_id = Request::input('user_id');
         $title = Request::input('title');
-        $group_id = Request::input('group_id');
 
         $discipline = new Discipline;
         $discipline->title = $title;
         $discipline->user_id = $user_id;
-        $discipline->group_id = $group_id;
         $discipline->save();
 
         return redirect('disciplines');

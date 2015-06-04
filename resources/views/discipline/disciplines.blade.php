@@ -5,7 +5,6 @@
     <div class="col-md-6">
         <table class="table table-hover">
             <h4>Дисципліни</h4>
-            <?= $gr; ?>
             @foreach ($disciplines as $discipline)
             <tr>
                 <td>
@@ -38,14 +37,7 @@
             {!! Form::label('title', 'Назва:') !!}
             {!! Form::text('title', null, ['class' => 'form-control ']) !!}
         </div>
-        <div class="form-group">
-            {!! Form::label('group_id', 'Оберіть групу:') !!}
-            <select class="form-control" name="group_id">
-                @foreach($groups as $group)
-                <option value="{{ $group->id }}">{{ $group->title }}</option>
-                @endforeach
-            </select>
-        </div>
+
         <div class="form-group">
             {!! Form::submit('Додати', ['class' => 'btn btn-primary form-control ']) !!}
         </div>

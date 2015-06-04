@@ -13,7 +13,7 @@ class Discipline extends Model {
         return $this->belongsTo('App\User');
     }
 
-    public function group() {
+    public function groups() {
         return $this->belongsToMany('App\Group');
     }
 
