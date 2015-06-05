@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \Illuminate\Support\Facades\Auth;
 use Request;
-use App\User;
 use App\Discipline;
 use App\Group;
+use App\Study;
 
 class DisciplineController extends Controller {
 
@@ -19,11 +18,10 @@ class DisciplineController extends Controller {
      */
     public function index() {
         $id = Auth::id();
-        //$gr = Discipline::find(1)->group;
 
         $disciplines = Discipline::where('user_id', '=', $id)->orderBy('title')->get();
         $groups = Group::orderBy('title')->get();
-        return view('discipline.disciplines', compact('disciplines', 'groups', 'gr'));
+        return view('discipline.disciplines', compact('disciplines', 'groups'));
     }
 
     /**
@@ -49,7 +47,15 @@ class DisciplineController extends Controller {
      * @return Response
      */
     public function store() {
-        //
+        $group_id = Request::input('group_id');
+        $discipline_id = Request::input('discipline_id');
+        
+        $study = new Study;
+        $study->discipline_id = $discipline_id;
+        $study->group_id = $group_id;
+        $study->save();
+
+        return redirect('disciplines/show');
     }
 
     /**
@@ -58,8 +64,11 @@ class DisciplineController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function show($id) {
-        //
+    public function show() {
+        $id = Auth::id();
+        $disciplines = Discipline::where('user_id', '=', $id)->orderBy('title')->get();
+        $groups = Group::orderBy('title')->get();
+        return view('discipline.show', compact('disciplines', 'groups'));
     }
 
     /**

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Study extends Model {
 
-    protected $table = 'group_discipline';
+    protected $table = 'discipline_group';
 
     public function disciplines() {
         return $this->belongsTo('App\Discipline');

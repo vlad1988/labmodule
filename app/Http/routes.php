@@ -28,8 +28,11 @@ Route::post('item/remove', 'StudentController@listbrake');
 /** Disciplines CRUD * */
 Route::get('disciplines', 'DisciplineController@index');
 Route::get('discipline/edit/{id}', 'DisciplineController@edit');
+Route::get('disciplines/show', 'DisciplineController@show');
 Route::post('create/discipline', 'DisciplineController@create');
 Route::post('discipline/remove/{id}', 'DisciplineController@destroy');
+Route::post('discipline/store', 'DisciplineController@store');
+
 
 
 Route::controllers([

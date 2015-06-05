@@ -3,8 +3,9 @@
 
 <div class="container">
     <div class="col-md-6">
+        <h4>Дисципліни <a href="{{url('disciplines/show/')}}"><i title="Додати группу" class="glyphicon glyphicon-link"></i></a></h4>
+        <hr/>
         <table class="table table-hover">
-            <h4>Дисципліни</h4>
             @foreach ($disciplines as $discipline)
             <tr>
                 <td>
