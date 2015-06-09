@@ -22,7 +22,8 @@ Route::get('show/{id}', 'StudentController@show');
 Route::post('create/student', 'StudentController@create');
 Route::post('addtolist', 'StudentController@addtolist');
 Route::post('item/remove', 'StudentController@listbrake');
-
+Route::post('studentlist', 'StudentController@studentlist');
+Route::post('report', 'StudentController@report');
 
 
 /** Disciplines CRUD * */

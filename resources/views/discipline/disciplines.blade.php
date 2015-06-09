@@ -48,7 +48,7 @@
             {!! Form::label('group_id', 'Оберіть групу:') !!}
             <select class="form-control" name="group_id">
                 @foreach($groups as $group)
-                <option value="{{ $group->title }}">{{ $group->title }}</option>
+                <option value="{{ $group->title}}|{{$group->id}}">{{ $group->title }}</option>
                 @endforeach
             </select>
         </div>

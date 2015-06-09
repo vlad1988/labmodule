@@ -6,7 +6,7 @@
 		<div class="title">Модуль обліку роботи студента </div>
 		<div class="quote">Littera scripta manet</div>
 		<hr/>
-		{!! Form::open(array('url' => 'create/scheme', 'method' => 'POST')) !!}
+		{!! Form::open(array('url' => 'studentlist', 'method' => 'POST')) !!}
 		<div class="form-group">
 		{!! Form::label('uuid', 'Ваш UUID:') !!}
 			{!! Form::text('uuid', null, ['class' => 'form-control ']) !!}

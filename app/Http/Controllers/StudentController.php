@@ -10,6 +10,7 @@ use App\Discipline;
 use App\Student;
 use App\Group;
 use Webpatser\Uuid\Uuid;
+use App\Scheme;
 
 class StudentController extends Controller {
 
@@ -69,7 +70,20 @@ class StudentController extends Controller {
     }
 
     public function studentlist(){
-        
+        $uuid = Request::input('uuid');
+        $student = Student::where('guid', '=', $uuid)->get();
+        $disciplines = Discipline::where('group_id', '=', $student[0]->group_id)->get();
+        $group = Group::find($student[0]->group_id);
+        $student_id = $student[0]->id;
+        return view('student.disciplines', compact('disciplines', 'group', 'student_id'));
+    }
+
+    public function report(){
+        $discipline_id = Request::input('discipline_id');
+        $student_id = Request::input('student_id');
+
+        $schemes = Scheme::where('discipline_id', '=', $discipline_id )->get();
+        return view('student.report', compact('discipline_id', 'student_id', 'schemes'));
     }
 
 }

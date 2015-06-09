@@ -33,12 +33,16 @@ class DisciplineController extends Controller {
     public function create() {
         $user_id = Request::input('user_id');
         $title = Request::input('title');
-        $group_name = Request::input('group_id');
+        $group_str = Request::input('group_id');
+        $group = explode('|', $group_str);
+        $group_name = $group[0];
+        $group_id = $group[1];
 
         $discipline = new Discipline;
         $discipline->title = $title;
         $discipline->user_id = $user_id;
         $discipline->group_name = $group_name;
+        $discipline->group_id = $group_id;
         $discipline->save();
 
         return redirect('disciplines');
