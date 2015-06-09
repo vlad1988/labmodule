@@ -29,10 +29,13 @@ Route::post('item/remove', 'StudentController@listbrake');
 Route::get('disciplines', 'DisciplineController@index');
 Route::get('discipline/edit/{id}', 'DisciplineController@edit');
 Route::get('disciplines/show', 'DisciplineController@show');
+Route::get('discipline/show/{id}', 'DisciplineController@show');
+
 Route::post('create/discipline', 'DisciplineController@create');
 Route::post('discipline/remove/{id}', 'DisciplineController@destroy');
 Route::post('discipline/store', 'DisciplineController@store');
 
+Route::post('create/scheme', 'SchemeController@create');
 
 
 Route::controllers([

@@ -8,6 +8,7 @@ use Request;
 use App\Discipline;
 use App\Group;
 use App\Study;
+use App\Scheme;
 
 class DisciplineController extends Controller {
 
@@ -32,10 +33,12 @@ class DisciplineController extends Controller {
     public function create() {
         $user_id = Request::input('user_id');
         $title = Request::input('title');
+        $group_name = Request::input('group_id');
 
         $discipline = new Discipline;
         $discipline->title = $title;
         $discipline->user_id = $user_id;
+        $discipline->group_name = $group_name;
         $discipline->save();
 
         return redirect('disciplines');
@@ -64,11 +67,11 @@ class DisciplineController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function show() {
-        $id = Auth::id();
-        $disciplines = Discipline::where('user_id', '=', $id)->orderBy('title')->get();
-        $groups = Group::orderBy('title')->get();
-        return view('discipline.show', compact('disciplines', 'groups'));
+    public function show($id) {
+        $discipline_id = $id;
+        $schemes = Scheme::where('discipline_id', '=', $id)->orderBy('title')->get();
+        $discipline = Discipline::where('id', '=', $id)->orderBy('title')->get();
+        return view('discipline.show', compact('discipline', 'discipline_id', 'schemes'));
     }
 
     /**
@@ -98,6 +101,10 @@ class DisciplineController extends Controller {
      * @return Response
      */
     public function destroy($id) {
+        return $id;
+    }
+
+    public function disciplineview($id){
         return $id;
     }
 

@@ -14,6 +14,7 @@ class CreateDisciplinesTable extends Migration {
         Schema::create('disciplines', function(Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('group_name');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

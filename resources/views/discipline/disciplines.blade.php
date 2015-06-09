@@ -3,13 +3,19 @@
 
 <div class="container">
     <div class="col-md-6">
-        <h4>Дисципліни <a href="{{url('disciplines/show/')}}"><i title="Додати группу" class="glyphicon glyphicon-link"></i></a></h4>
+    <h4>Дисципліни </h4>
         <hr/>
         <table class="table table-hover">
+        <tr>
+            
+        </tr>
             @foreach ($disciplines as $discipline)
             <tr>
                 <td>
-                    <a href="{{url('discipline/edit/'.$discipline->id)}}">{{ $discipline->title }}</a>
+                    <a href="{{url('discipline/show/'.$discipline->id)}}">{{ $discipline->title }}</a>
+                </td>
+                <td>
+                    {{ $discipline->group_name }}
                 </td>
                 <td>
                     <a href="{{url('discipline/edit/'.$discipline->id)}}" >
@@ -37,6 +43,14 @@
         <div class="form-group">
             {!! Form::label('title', 'Назва:') !!}
             {!! Form::text('title', null, ['class' => 'form-control ']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('group_id', 'Оберіть групу:') !!}
+            <select class="form-control" name="group_id">
+                @foreach($groups as $group)
+                <option value="{{ $group->title }}">{{ $group->title }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="form-group">

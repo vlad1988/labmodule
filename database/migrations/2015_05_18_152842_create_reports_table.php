@@ -17,7 +17,7 @@ class CreateReportsTable extends Migration {
             $table->string('filepath');
             $table->date('approvedate');
             $table->string('status');
-            $table->integer('discipline_id')->unique();
+            $table->integer('discipline_id')->unsigned();
             $table->integer('student_id')->unsigned();
             $table->integer('schema_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('students');

@@ -13,9 +13,6 @@ use Webpatser\Uuid\Uuid;
 
 class StudentController extends Controller {
 
-    public function __construct() {
-        $this->middleware('auth');
-    }
 
     /**
      * Display a listing of the resource.
@@ -69,6 +66,10 @@ class StudentController extends Controller {
         $discipline_id = Request::input('discipline_id');
         Study::whereRaw('student_id = '.$student_id.' and discipline_id = '.$discipline_id)->delete();
         return redirect('show/' . $student_id);
+    }
+
+    public function studentlist(){
+        
     }
 
 }
