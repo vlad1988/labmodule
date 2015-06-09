@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Webpatser\Uuid\Uuid;
 use Request;
 use App\Study;
 use App\Discipline;
 use App\Student;
 use App\Group;
-use Webpatser\Uuid\Uuid;
 use App\Scheme;
+use App\Report;
 
 class StudentController extends Controller {
 
@@ -78,12 +79,10 @@ class StudentController extends Controller {
         return view('student.disciplines', compact('disciplines', 'group', 'student_id'));
     }
 
-    public function report(){
-        $discipline_id = Request::input('discipline_id');
-        $student_id = Request::input('student_id');
-
+    public function report($student_id,  $discipline_id){
+        $reports = Report::whereRaw('student_id ='.$student_id.' and discipline_id = '.$discipline_id)->get();
         $schemes = Scheme::where('discipline_id', '=', $discipline_id )->get();
-        return view('student.report', compact('discipline_id', 'student_id', 'schemes'));
+        return view('student.report', compact('discipline_id', 'student_id', 'schemes', 'reports'));
     }
 
 }

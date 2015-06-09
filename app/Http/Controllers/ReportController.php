@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 //use Illuminate\Http\Request;
 use Request;
+use App\Report;
 
 class ReportController extends Controller {
 
@@ -29,7 +30,6 @@ class ReportController extends Controller {
 		$discipline_id = Request::input('discipline_id');
 		$student_id = Request::input('student_id');
 		$title = Request::input('comment');
-		$now = date("Y-m-d");
 
 		$file = Request::file('file');
 		$extension = Request::file('file')->getClientOriginalExtension();
@@ -37,7 +37,17 @@ class ReportController extends Controller {
 		$fileName = rand(11111,99999).'.'.$extension;
 		Request::file('file')->move(base_path() . '/public/catalog/', $fileName);
 
-		return $extension;
+		$report = new Report;
+		$report->title = $title;
+		$report->filepath = $fileName;
+		$report->approvedate = date("Y-m-d");
+		$report->status = "Розглядається";
+		$report->discipline_id = $discipline_id;
+		$report->student_id = $student_id;
+		$report->schema_id = $schema_id;
+		$report->save();
+
+		return redirect('report');
 
 	}
 

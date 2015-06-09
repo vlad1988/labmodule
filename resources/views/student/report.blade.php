@@ -3,7 +3,18 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
-			
+		<table class="table table-hover">
+			@foreach ($reports as $report)
+				<tr>
+					<td>{{ $report->title }}</td>
+					<td>{{ $report->status }}</td>
+					<td>{{ $report->approvedate }}</td>
+					<td><a href="{{ url('download/'.$report->filepath) }}">Скачати</a></td>
+
+				</tr>
+			@endforeach
+		</table>
+					
 		</div>
 		<div class="col-md-6">
 			{!! Form::open(array('url' => 'createreport', 'method' => 'POST', 'files'=> true)) !!}

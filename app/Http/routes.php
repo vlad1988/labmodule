@@ -19,11 +19,12 @@ Route::post('editgroup', 'HomeController@editgroup');
 /** Srudents CRUD * */
 Route::get('students', 'StudentController@index');
 Route::get('show/{id}', 'StudentController@show');
+Route::get('report/{student_id}/{discipline_id}', 'StudentController@report');
+
 Route::post('create/student', 'StudentController@create');
 Route::post('addtolist', 'StudentController@addtolist');
 Route::post('item/remove', 'StudentController@listbrake');
 Route::post('studentlist', 'StudentController@studentlist');
-Route::post('report', 'StudentController@report');
 
 
 /** Disciplines CRUD * */
@@ -38,6 +39,10 @@ Route::post('discipline/store', 'DisciplineController@store');
 
 /** Scheme CRUD **/
 Route::post('create/scheme', 'SchemeController@create');
+Route::get('download/{filename}', function($filename){
+	$file_path = base_path() . '/public/catalog/'. $filename;
+	return Response::download($file_path);
+});
 
 /** Report CRUD **/
 Route::post('createreport', 'ReportController@create');

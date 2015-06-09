@@ -14,11 +14,8 @@
 					{{ $discipline->title }}
 				</td>
 				<td>
-				{!! Form::open(array('url' => 'report', 'method' => 'POST')) !!}
-					{!! Form::hidden('student_id', $student_id) !!}
-                    {!! Form::hidden('discipline_id', $discipline->id) !!}
+				{!! Form::open(array('url' => 'report/'.$student_id.'/'.$discipline->id.'/', 'method' => 'GET')) !!}
 					<input type="submit" value="Перейти до обліку" class="form-control btn btn-success">
-
 				{!! Form::close() !!}
 				</td>
 			</tr>
