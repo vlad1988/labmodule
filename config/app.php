@@ -177,5 +177,6 @@ return [
         'Form' => 'Illuminate\Html\FormFacade',
         'Html' => 'Illuminate\Html\HtmlFacade',
         'Uuid' => 'Webpatser\Uuid\Uuid',
+        'Carbon' => 'Carbon\Carbon',
     ],
 ];

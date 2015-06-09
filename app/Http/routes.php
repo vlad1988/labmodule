@@ -39,7 +39,8 @@ Route::post('discipline/store', 'DisciplineController@store');
 /** Scheme CRUD **/
 Route::post('create/scheme', 'SchemeController@create');
 
-
+/** Report CRUD **/
+Route::post('createreport', 'ReportController@create');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+//use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use Request;
 
 class ReportController extends Controller {
 
@@ -14,7 +15,7 @@ class ReportController extends Controller {
 	 */
 	public function index()
 	{
-		//
+
 	}
 
 	/**
@@ -24,7 +25,20 @@ class ReportController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$schema_id = Request::input('schema');
+		$discipline_id = Request::input('discipline_id');
+		$student_id = Request::input('student_id');
+		$title = Request::input('comment');
+		$now = date("Y-m-d");
+
+		$file = Request::file('file');
+		$extension = Request::file('file')->getClientOriginalExtension();
+
+		$fileName = rand(11111,99999).'.'.$extension;
+		Request::file('file')->move(base_path() . '/public/catalog/', $fileName);
+
+		return $extension;
+
 	}
 
 	/**

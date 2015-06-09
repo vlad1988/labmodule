@@ -6,7 +6,10 @@
 			
 		</div>
 		<div class="col-md-6">
-			{!! Form::open(array('url' => 'createreport', 'method' => 'POST')) !!}
+			{!! Form::open(array('url' => 'createreport', 'method' => 'POST', 'files'=> true)) !!}
+                    {!! Form::hidden('discipline_id', $discipline_id) !!}
+                    {!! Form::hidden('student_id', $student_id) !!}
+
 			<div class="form-group">
 				{!! Form::label('schema', 'Оберіть блок:') !!}
 				<select name="schema" class="form-control">
@@ -20,8 +23,8 @@
 				{!! Form::file('file') !!}
 			</div>
 			<div class="form-group">
-				{!! Form::label('uuid', 'Коментар:') !!}
-				{!! Form::textarea('uuid', null, ['class' => 'form-control ']) !!}
+				{!! Form::label('comment', 'Коментар:') !!}
+				{!! Form::textarea('comment', null, ['class' => 'form-control ']) !!}
 			</div>
 			<div class="form-group">
 				{!! Form::submit('Надіслати', ['class' => 'btn btn-primary form-control ']) !!}
