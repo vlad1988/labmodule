@@ -8,7 +8,7 @@
 		<hr/>
 		{!! Form::open(array('url' => 'studentlist', 'method' => 'POST')) !!}
 		<div class="form-group">
-		{!! Form::label('uuid', 'Ваш UUID:') !!}
+			{!! Form::label('uuid', 'Ваш UUID:') !!}
 			{!! Form::text('uuid', null, ['class' => 'form-control ']) !!}
 		</div>
 		<div class="form-group">
