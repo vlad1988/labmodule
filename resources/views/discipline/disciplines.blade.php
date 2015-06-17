@@ -3,12 +3,12 @@
 
 <div class="container">
     <div class="col-md-6">
-    <h4>Дисципліни </h4>
+        <h4>Дисципліни </h4>
         <hr/>
         <table class="table table-hover">
-        <tr>
-            
-        </tr>
+            <tr>
+                
+            </tr>
             @foreach ($disciplines as $discipline)
             <tr>
                 <td>

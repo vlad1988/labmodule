@@ -15,6 +15,8 @@ class CreateGroupsTable extends Migration {
             $table->increments('id');
             $table->string('title');
             $table->timestamps();
+            $table->integer('departament_id')->unsigned();
+            $table->foreign('departament_id')->references('id')->on('departaments');
         });
     }
 

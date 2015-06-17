@@ -37,6 +37,9 @@ Route::post('create/discipline', 'DisciplineController@create');
 Route::post('discipline/remove/{id}', 'DisciplineController@destroy');
 Route::post('discipline/store', 'DisciplineController@store');
 
+Route::get('sum', 'StudentController@sumreport');
+
+
 /** Scheme CRUD **/
 Route::post('create/scheme', 'SchemeController@create');
 Route::get('download/{filename}', function($filename){

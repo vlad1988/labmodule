@@ -2,19 +2,26 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Departament;
 class DatabaseSeeder extends Seeder {
 
-	/**
+    /**
 	 * Run the database seeds.
 	 *
 	 * @return void
 	 */
-	public function run()
-	{
-		Model::unguard();
+    public function run()
+    {
+        Model::unguard();
 
-		// $this->call('UserTableSeeder');
-	}
+        $this->call('DepartamentTableSeeder');
+    }
 
+}
+
+class DepartamentTableSeeder extends Seeder{
+    public function run(){
+        Departament::create(['title' => 'ФЕКІ']);
+        Departament::create(['title' => 'ІЕЕСУ']);
+    }
 }

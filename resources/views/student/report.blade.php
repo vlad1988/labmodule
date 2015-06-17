@@ -4,6 +4,12 @@
 	<div class="row">
 		<div class="col-md-6">
 		<table class="table table-hover">
+		<tr>
+			<th>Назва</th>
+			<th>Статус</th>
+			<th>Надіслано</th>
+			<th>Файл звіту</th>
+		</tr>
 			@foreach ($reports as $report)
 				<tr>
 					<td>{{ $report->title }}</td>

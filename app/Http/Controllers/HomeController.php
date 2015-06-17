@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use \Illuminate\Support\Facades\Auth;
 
 use App\Group;
 use App\Student;
 use App\Http\Requests;
+use App\Discipline;
 use Request;
 
 class HomeController extends Controller {
@@ -66,8 +68,10 @@ class HomeController extends Controller {
     }
 
     public function group($id) {
+        $user_id = Auth::id();
+        $disciplines = Discipline::whereRaw('group_id = ' . $id. ' and user_id = ' . $user_id)->get();
         $students = Student::where('group_id', '=', $id)->orderBy('surname')->get();
-        return view('home.group', compact('id', 'students'));
+        return view('home.group', compact('id', 'students', 'disciplines'));
     }
 
 }

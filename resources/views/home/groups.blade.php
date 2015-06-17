@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="content row">
-        <div class="col-md-4">
+        <div class="col-md-8">
             <h4 class="title">Групи</h4> 
             <hr>
             <table class="table table-striped">
@@ -18,7 +18,7 @@
                 @endforeach
             </table>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-4">
             <h4 class="title">Додати группу</h4>
             <hr>
             {!! Form::open(['url' => 'groups']) !!}
@@ -26,6 +26,7 @@
                 {!! Form::label('title', 'Назва:') !!}
                 {!! Form::text('title', null, ['class' => 'form-control ']) !!}
             </div>
+            
             <div class="form-group">
                 {!! Form::submit('Додати групу', ['class' => 'btn btn-primary form-control ']) !!}
             </div>

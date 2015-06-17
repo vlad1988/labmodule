@@ -16,6 +16,7 @@ class CreateSchemesTable extends Migration {
             $table->string('title');
             $table->string('type');
             $table->date('expiredate');
+            $table->integer('unit');
             $table->integer('discipline_id')->unsigned();
             $table->foreign('discipline_id')->references('id')->on('disciplines');
             $table->timestamps();

@@ -5,6 +5,8 @@
     <h4><?= $discipline[0]->title; ?></h4>
     <div class="row">
         <div class="col-md-6">
+        <h4>Блоки оцінювання</h4>
+
         <table class="table table-hover">
         <tr>
             <th>Назва</th>

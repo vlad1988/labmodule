@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use \Illuminate\Support\Facades\Auth;
 use Webpatser\Uuid\Uuid;
 use Request;
 use App\Study;
@@ -58,9 +59,9 @@ class StudentController extends Controller {
 
     public function show($id) {
         $student = Student::find($id);
-        $discipline_list = Discipline::all();
-        $disciplines = Student::find($id)->disciplines;
-        return view('student.student', compact('disciplines', 'student', 'discipline_list', 'id'));
+        $user_id = Auth::id();
+        $disciplines = Discipline::whereRaw('group_id = ' . $student->group_id . ' and user_id = ' . $user_id)->get();
+        return view('student.student', compact('student', 'disciplines'));
     }
 
     public function listbrake() {
@@ -84,5 +85,10 @@ class StudentController extends Controller {
         $schemes = Scheme::where('discipline_id', '=', $discipline_id )->get();
         return view('student.report', compact('discipline_id', 'student_id', 'schemes', 'reports'));
     }
+    
+    public function sumreport(){
+        return view('student.sum');
+    }
+    
 
 }

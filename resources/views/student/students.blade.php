@@ -12,9 +12,7 @@
             @foreach ($students as $student)
             <tr>
                 <td>
-                    <a href="{{action('StudentController@show', [$student->id])}}">
-                        {{ $student->surname }} {{ $student->name }}
-                    </a>
+                    {{ $student->surname }} {{ $student->name }}
                 </td>
                 <td>{{ $student->email }}</td>
                 <td>{{ $student->guid }}</td>
