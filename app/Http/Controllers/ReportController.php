@@ -47,7 +47,7 @@ class ReportController extends Controller {
 		$report->schema_id = $schema_id;
 		$report->save();
 
-		return redirect('report');
+		return redirect('report/'.$student_id.'/'.$discipline_id);
 
 	}
 

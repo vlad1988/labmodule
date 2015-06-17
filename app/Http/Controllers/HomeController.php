@@ -7,6 +7,8 @@ use App\Group;
 use App\Student;
 use App\Http\Requests;
 use App\Discipline;
+use App\Departament;
+use DB;
 use Request;
 
 class HomeController extends Controller {
@@ -31,13 +33,18 @@ class HomeController extends Controller {
 
     public function groups() {
         $groups = Group::orderBy('title')->get();
-        return view('home.groups', compact('groups'));
+        $departaments = Departament::orderBy('title')->get();
+
+        return view('home.groups', compact('groups', 'departaments'));
     }
 
     public function creategroup() {
         $group = new Group;
         $input = Request::input('title');
+        $departament = Request::input('departament');
         $group->title = $input;
+        $group->departament_id = $departament;
+
         $group->save();
         return redirect('groups');
     }

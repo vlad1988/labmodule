@@ -11,9 +11,9 @@
 			<th>Файл звіту</th>
 		</tr>
 			@foreach ($reports as $report)
-				<tr>
+				<tr data-schema="{{ $report->schema_id }}">
 					<td>{{ $report->title }}</td>
-					<td>{{ $report->status }}</td>
+					<td><span>{{ $report->status }}</span></td>
 					<td>{{ $report->approvedate }}</td>
 					<td><a href="{{ url('download/'.$report->filepath) }}">Скачати</a></td>
 
@@ -30,6 +30,7 @@
 			<div class="form-group">
 				{!! Form::label('schema', 'Оберіть блок:') !!}
 				<select name="schema" class="form-control">
+                    <option></option>
 					@foreach ($schemes as $schema)
 						<option value="{{ $schema->id }}">{{ $schema->title }}</option>
 					@endforeach

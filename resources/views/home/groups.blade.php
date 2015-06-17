@@ -1,6 +1,5 @@
 @extends('app')
 @section('content')
-
 <div class="container">
     <div class="content row">
         <div class="col-md-8">
@@ -26,7 +25,14 @@
                 {!! Form::label('title', 'Назва:') !!}
                 {!! Form::text('title', null, ['class' => 'form-control ']) !!}
             </div>
-            
+            <div class="form-group">
+                {!! Form::label('title', 'Факультет:') !!}
+                <select name="departament" class="form-control">
+                    @foreach($departaments as $departament)
+                    <option value="{{ $departament->id }}">{{ $departament->title }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="form-group">
                 {!! Form::submit('Додати групу', ['class' => 'btn btn-primary form-control ']) !!}
             </div>
