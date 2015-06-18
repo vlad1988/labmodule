@@ -51,6 +51,8 @@ Route::get('download/{filename}', function($filename){
 Route::post('createreport', 'ReportController@create');
 Route::get('reportlist/{discipline_id}/{group_id}', 'ReportController@reportlist');
 Route::get('showreport/{discipline_id}/{student_id}', 'ReportController@show');
+Route::get('editreport/{report_id}/{discipline_id}/{student_id}', 'ReportController@edit');
+Route::post('updatereport', 'ReportController@update');
 
 
 Route::controllers([

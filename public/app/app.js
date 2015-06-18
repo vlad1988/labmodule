@@ -11,6 +11,14 @@
         $(this).addClass('badge');
     });
 
+    $('span:contains("Схвалено")').each(function(){
+        $(this).addClass('label label-success');
+    });
+
+    $('span:contains("На доопрацювання")').each(function(){
+        $(this).addClass('label label-danger');
+    });
+
     $('tr').each( function () {
         $('option[value='+$(this).attr('data-schema')+']').hide();
     });

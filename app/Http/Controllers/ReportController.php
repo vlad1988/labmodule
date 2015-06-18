@@ -72,7 +72,7 @@ class ReportController extends Controller {
     {
         $reports = Report::whereRaw('discipline_id = ' . $discipline_id. ' and student_id = ' . $student_id)->get();
 
-        return $reports;
+        return view('student.showreport', compact('reports', 'discipline_id', 'student_id'));
     }
 
     /**
@@ -81,9 +81,10 @@ class ReportController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-    public function edit($id)
+    public function edit($report_id, $discipline_id, $student_id)
     {
-        //
+        $report = Report::where('id', '=', $report_id)->get();
+        return view('student.updatereport', compact('report', 'report_id', 'discipline_id', 'student_id'));
     }
 
     /**
@@ -92,9 +93,17 @@ class ReportController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-    public function update($id)
+    public function update()
     {
-        //
+        $id = Request::input('report_id');
+        $status = Request::input('status');
+        $discipline_id= Request::input('discipline_id');
+        $student_id = Request::input('student_id');
+
+        $report = Report::find($id);
+        $report->status = $status;
+        $report->save();
+        return redirect('showreport/'.$discipline_id.'/'.$student_id);
     }
 
     /**
