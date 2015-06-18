@@ -49,6 +49,8 @@ Route::get('download/{filename}', function($filename){
 
 /** Report CRUD **/
 Route::post('createreport', 'ReportController@create');
+Route::get('reportlist/{discipline_id}/{group_id}', 'ReportController@reportlist');
+
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

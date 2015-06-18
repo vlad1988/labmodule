@@ -12,7 +12,7 @@
             @foreach ($disciplines as $discipline)
             <tr>
                 <td>
-                    <a href="{{url('discipline/show/'.$discipline->id)}}">{{ $discipline->title }}</a>
+                    <a href="{{url('reportlist/'.$discipline->id.'/'.$id)}}">{{ $discipline->title }}</a>
                 </td>
                 <td>
                     {{ $discipline->group_name }}

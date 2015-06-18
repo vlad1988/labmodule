@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 //use Illuminate\Http\Request;
 use Request;
 use App\Report;
+use App\Student;
 
 class ReportController extends Controller {
 
@@ -69,7 +70,7 @@ class ReportController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		
 	}
 
 	/**
@@ -102,7 +103,12 @@ class ReportController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		
 	}
+    
+    public function reportlist($discipline_id, $group_id){
+        $students = Student::where('group_id', '=', $group_id)->orderBy('surname')->get();
+        return view('student.reportlist', compact('students'));
+    }
 
 }
