@@ -11,7 +11,7 @@
             @foreach ($students as $student)
             <tr>
                 <td>
-                    {{ $student->surname }} {{ $student->name }}
+                    <a href="{{url('showreport/'.$discipline_id.'/'.$student->id)}}">{{ $student->surname }} {{ $student->name }}</a>
                 </td>
                 <td>{{ $student->email }}</td>
                 <td>{{ $student->guid }}</td>
