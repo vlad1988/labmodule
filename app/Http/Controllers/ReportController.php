@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Request;
 use App\Report;
 use App\Student;
+use App\Discipline;
 
 class ReportController extends Controller {
 
@@ -70,9 +71,11 @@ class ReportController extends Controller {
 	 */
     public function show($discipline_id, $student_id)
     {
+        $discipline = Discipline::find($discipline_id);
+        $student = Student::find($student_id);
         $reports = Report::whereRaw('discipline_id = ' . $discipline_id. ' and student_id = ' . $student_id)->get();
 
-        return view('student.showreport', compact('reports', 'discipline_id', 'student_id'));
+        return view('student.showreport', compact('reports', 'discipline_id', 'student_id', 'student', 'discipline'));
     }
 
     /**
@@ -83,6 +86,7 @@ class ReportController extends Controller {
 	 */
     public function edit($report_id, $discipline_id, $student_id)
     {
+
         $report = Report::where('id', '=', $report_id)->get();
         return view('student.updatereport', compact('report', 'report_id', 'discipline_id', 'student_id'));
     }
@@ -112,9 +116,11 @@ class ReportController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-    public function destroy($id)
+    public function destroy($id, $discipline_id, $student_id)
     {
-
+        $report = Report::find($id);
+        $report->delete();
+        return redirect('report/'.$student_id.'/'.$discipline_id);
     }
 
     public function reportlist($discipline_id, $group_id){

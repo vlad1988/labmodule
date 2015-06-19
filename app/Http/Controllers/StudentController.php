@@ -81,7 +81,7 @@ class StudentController extends Controller {
     }
 
     public function report($student_id,  $discipline_id){
-        $reports = Report::whereRaw('student_id ='.$student_id.' and discipline_id = '.$discipline_id)->get();
+        $reports = Report::whereRaw('student_id ='.$student_id.' and discipline_id = '.$discipline_id)->orderBy('title')->get();
         $schemes = Scheme::where('discipline_id', '=', $discipline_id )->get();
         return view('student.report', compact('discipline_id', 'student_id', 'schemes', 'reports'));
     }

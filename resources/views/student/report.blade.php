@@ -2,13 +2,14 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-8">
 		<table class="table table-hover">
 		<tr>
 			<th>Назва</th>
 			<th>Статус</th>
 			<th>Надіслано</th>
 			<th>Файл звіту</th>
+            <th></th>
 		</tr>
 			@foreach ($reports as $report)
 				<tr data-schema="{{ $report->schema_id }}">
@@ -16,13 +17,13 @@
 					<td><span>{{ $report->status }}</span></td>
 					<td>{{ $report->approvedate }}</td>
 					<td><a href="{{ url('download/'.$report->filepath) }}">Скачати</a></td>
-
+                    <td><a href="{{ url('remove/report/'.$report->id.'/'.$discipline_id.'/'.$student_id) }}"> Видалити</a></td>
 				</tr>
 			@endforeach
 		</table>
 					
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-4">
 			{!! Form::open(array('url' => 'createreport', 'method' => 'POST', 'files'=> true)) !!}
                     {!! Form::hidden('discipline_id', $discipline_id) !!}
                     {!! Form::hidden('student_id', $student_id) !!}

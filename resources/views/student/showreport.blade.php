@@ -1,9 +1,11 @@
 @extends('app')
 @section('content')
 <div class="container">
-    {{ $discipline_id }}
-    {{ $student_id }}
-    <h4>Перегляд звітів студентів </h4>
+    <h4>
+   <strong> {{ $discipline->title }}</strong>
+        </h4>
+    <h4>Перегляд звітів студента - {{ $student->name }} {{ $student->surname }}</h4>
+    
     <table class="table table-hover">
         <tr>
             <th>Назва</th>
